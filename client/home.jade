@@ -2,17 +2,18 @@ head
   title Pulsar dominoes
 
 body
+  h1 Pulsar Dominoes!
   {{>board}}
 
 template(name="board")
-  p BOARD
-  input.add-domino(value="Add domino", type="button")
-  div(style="clear:both")
-  {{#each dominoes}}
-    {{>domino}}
-  {{/each}}
+  #board
+    input.add-domino(value="Add domino", type="button")
+    div(style="clear:both")
+    {{#each dominoes}}
+      {{>domino}}
+    {{/each}}
 
 template(name="domino")
-  .domino(class="orientation-{{orientation}}") 
+  .domino(class="orientation-{{orientation}}", style="left:{{pos_x}}px;top:{{pos_y}}px") 
     {{type}}
 

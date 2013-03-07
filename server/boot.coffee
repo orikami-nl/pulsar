@@ -6,4 +6,7 @@ Meteor.publish "dominoes", ->
 Meteor.startup ->
   Dominoes.remove({})
   for a in "qwertyuiopasdfghjklkzxcvbnm"
-    Dominoes.insert({type: a})
+    orientation = Random.choice("nswe")
+    pos_x = Math.round(Random.fraction()*22*10*4)
+    pos_y = Math.round(Random.fraction()*22*5*4)
+    Dominoes.insert({type: a, orientation: orientation, pos_x: pos_x, pos_y: pos_y})
