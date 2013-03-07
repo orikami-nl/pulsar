@@ -2,10 +2,10 @@ head
   title Pulsar dominoes
 
 body
+  h1 Pulsar Dominoes!
   {{>board}}
 
 template(name="board")
-  p BOARD
   input.add-domino(value="Add domino", type="button")
   div(style="clear:both")
   {{#each dominoes}}
