@@ -5,6 +5,7 @@
   },
   "packages": {
     "stylus-mixin": {},
-    "jade-handlebars": {}
+    "jade-handlebars": {},
+    "jquery-ui": {}
   }
 }
