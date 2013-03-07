@@ -14,13 +14,16 @@ Template.board.rendered = ->
   console.log 'board rendered'
   $('.domino').draggable()
 
-Template.domino.events(
+Template.board.events(
   'click .add-domino': (e) ->
-    type = Random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+    type = Random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJK")
     orientation = Random.choice("nswe")
-    pos_x = Math.round(Random.fraction()*22*10)
-    pos_y = Math.round(Random.fraction()*22*5)
+    pos_x = Math.round(Random.fraction()*22*10*4)
+    pos_y = Math.round(Random.fraction()*22*5*4)
     Dominoes.insert({type: type, orientation: orientation, pos_x: pos_x, pos_y: pos_y})
+
+  'click .clear-dominoes': (e) ->
+    Dominoes.remove({})
     
   'contextmenu .domino': (e) ->
     ori = "nesw".indexOf(@orientation)

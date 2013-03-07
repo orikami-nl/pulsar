@@ -5,7 +5,7 @@ Meteor.publish "dominoes", ->
   
 Meteor.startup ->
   Dominoes.remove({})
-  for a in "qwertyuiopasdfghjklkzxcvbnm"
+  for a in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJK"
     orientation = Random.choice("nswe")
     pos_x = Math.round(Random.fraction()*22*10*4)
     pos_y = Math.round(Random.fraction()*22*5*4)

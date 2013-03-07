@@ -8,6 +8,7 @@ body
 template(name="board")
   #board
     input.add-domino(value="Add domino", type="button")
+    input.clear-dominoes(value="Clear dominos", type="button")
     div(style="clear:both")
     {{#each dominoes}}
       {{>domino}}
