@@ -11,5 +11,7 @@ Template.board.events(
     console.log e
     type = Random.choice("qwertyuiopasdfghjklkzxcvbnm")
     orientation = Random.choice("nswe")
-    Dominoes.insert({type: type, orientation: orientation})
+    pos_x = Math.round(Random.fraction()*22*10)
+    pos_y = Math.round(Random.fraction()*22*5)
+    Dominoes.insert({type: type, orientation: orientation, pos_x: pos_x, pos_y: pos_y})
  )
