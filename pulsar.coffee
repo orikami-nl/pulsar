@@ -1,6 +1,4 @@
-if Meteor.isClient
-  ;
+Dominoes = new Meteor.Collection("dominoes")
 
-if Meteor.isServer
-  Meteor.startup ->
-    
+Meteor.autorun ->
+  Meteor.subscribe "dominoes"
