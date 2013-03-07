@@ -15,3 +15,9 @@ Template.board.events(
     pos_y = Math.round(Random.fraction()*22*5)
     Dominoes.insert({type: type, orientation: orientation, pos_x: pos_x, pos_y: pos_y})
  )
+
+Template.domino.events(
+  'dragstop .domino': (e) ->
+    pos = event.currentTarget.position()
+    Dominoes.update({_id: @id},{$set: {pos_x: pos.left, pos_y: pos.top}})
+)
