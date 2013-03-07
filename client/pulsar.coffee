@@ -5,3 +5,9 @@ Meteor.autorun ->
 
 Template.board.dominoes = ->
   Dominoes.find({}).fetch()
+
+Template.board.events(
+  'click .add-domino': (e)->
+    type = Random.choice("qwertyuiopasdfghjklkzxcvbnm")
+    Dominoes.insert({type: type})
+)

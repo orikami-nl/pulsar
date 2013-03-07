@@ -6,6 +6,8 @@ body
 
 template(name="board")
   p BOARD
+  input.add-domino(value="Add domino", type="button")
+  div(style="clear:both")
   {{#each dominoes}}
     {{>domino}}
   {{/each}}
@@ -13,3 +15,4 @@ template(name="board")
 template(name="domino")
   .domino
     {{type}}
+
