@@ -8,7 +8,8 @@ Template.board.dominoes = ->
 
 Template.board.events(
   'click .add-domino': (e) ->
+    console.log e
     type = Random.choice("qwertyuiopasdfghjklkzxcvbnm")
-    orientation = "orientation-" + Random.choice("nswe")
+    orientation = Random.choice("nswe")
     Dominoes.insert({type: type, orientation: orientation})
  )
