@@ -10,9 +10,7 @@ template(name="board")
     input.add-domino(value="Add domino", type="button")
     div(style="clear:both")
     {{#each dominoes}}
-      {{#isolate}}
-        {{>domino}}
-      {{/isolate}}
+      {{>domino}}
     {{/each}}
 
 template(name="domino")

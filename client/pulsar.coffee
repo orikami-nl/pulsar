@@ -7,9 +7,14 @@ Meteor.autorun ->
   Meteor.subscribe "dominoes"
 
 Template.board.dominoes = ->
-  Dominoes.find({}).fetch()
+  console.log 'dominoes context'
+  Dominoes.find()
 
-Template.board.events(
+Template.board.rendered = ->
+  console.log 'board rendered'
+  $('.domino').draggable()
+
+Template.domino.events(
   'click .add-domino': (e) ->
     type = Random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
     orientation = Random.choice("nswe")
@@ -27,9 +32,7 @@ Template.board.events(
 
   'mouseup .domino':(e) ->
     pos = $(e.target).position()
-    result = Dominoes.update({_id: @_id},{$set: {pos_x: pos.left, pos_y: pos.top}})
-    console.log 'stop',e,$(e.target),pos,result
+    Dominoes.update({_id: @_id},{$set: {pos_x: pos.left, pos_y: pos.top}})
+    #console.log 'stop',e,$(e.target),pos
 )
 
-Template.board.rendered = ->
-  $('.domino').draggable()
