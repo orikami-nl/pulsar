@@ -12,11 +12,15 @@ Template.board.dominoes = ->
 Template.board.events(
   'click .add-domino': (e) ->
     type = Random.choice("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
-    orientation = "orientation-" + Random.choice("nswe")
+    orientation = Random.choice("nswe")
     Dominoes.insert({type: type, orientation: orientation})
+
   'click .domino': (e) ->
-    pos = "nesw".find(@orientation)
-    @orientation = "nesw"[pos+1]
+    pos = "nesw".indexOf(@orientation)
+    @orientation = "neswn"[pos+1]
+
+    console.log(pos,@orientation)
+    Dominoes.update({_id:@_id},{$set: {orientation: @orientation}})
 )
 
 Template.board.rendered = ->
