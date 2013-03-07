@@ -8,3 +8,4 @@ preserve-inputs
 stylus-mixin
 jade-handlebars
 coffeescript
+jquery-ui
