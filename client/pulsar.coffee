@@ -16,19 +16,20 @@ Template.board.events(
     pos_x = Math.round(Random.fraction()*22*10)
     pos_y = Math.round(Random.fraction()*22*5)
     Dominoes.insert({type: type, orientation: orientation, pos_x: pos_x, pos_y: pos_y})
+    
+  'contextmenu .domino': (e) ->
+    ori = "nesw".indexOf(@orientation)
+    @orientation = "neswn"[ori+1]
 
-  'click .domino': (e) ->
-    pos = "nesw".indexOf(@orientation)
-    @orientation = "neswn"[pos+1]
+    pos = $(e.currentTarget).position()
+    Dominoes.update({_id:@_id},{$set: {orientation: @orientation,pos_x: pos.left, pos_y: pos.top}})
+    e.preventDefault()
 
-    console.log(pos,@orientation)
-    Dominoes.update({_id:@_id},{$set: {orientation: @orientation}})
-
-  'dragstop .domino': (e) ->
-    pos = event.currentTarget.position()
-    Dominoes.update({_id: @id},{$set: {pos_x: pos.left, pos_y: pos.top}})
+  'mouseup .domino':(e) ->
+    pos = $(e.target).position()
+    result = Dominoes.update({_id: @_id},{$set: {pos_x: pos.left, pos_y: pos.top}})
+    console.log 'stop',e,$(e.target),pos,result
 )
 
 Template.board.rendered = ->
-  $('.domino').draggable({grid: [22,22]})
-
+  $('.domino').draggable()
