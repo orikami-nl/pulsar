@@ -7,7 +7,8 @@ Template.board.dominoes = ->
   Dominoes.find({}).fetch()
 
 Template.board.events(
-  'click .add-domino': (e)->
+  'click .add-domino': (e) ->
     type = Random.choice("qwertyuiopasdfghjklkzxcvbnm")
-    Dominoes.insert({type: type})
-)
+    orientation = "orientation-" + Random.choice("nswe")
+    Dominoes.insert({type: type, orientation: orientation})
+ )
