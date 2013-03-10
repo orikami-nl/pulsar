@@ -1,50 +1,55 @@
 $time = 1s
 
+.domino
+  transition: transform 500ms, left $time, top $time;
+  -moz-transition: transform 500ms, left $time, top $time; 
+  -webkit-transition: transform 500ms, left $time, top $time; 
+  transform-origin: 50% 50%
+  -moz-transform-origin: 50% 50%
+  -webkit-transform-origin: 50% 50%
+
+  // transition: left $time;
+  // -moz-transition: left $time; 
+  // -webkit-transition: left $time; 
+
+  // transition: top $time;
+  // -moz-transition: top $time; 
+  // -webkit-transition: top $time; 
+
+  &.ui-draggable-dragging
+    transition: none
+    -moz-transition: none 
+    -webkit-transition: none 
+
+    transition: none
+    -moz-transition: none 
+    -webkit-transition: none 
+
 .orientation-n {
   transform: rotate(0deg);
   -moz-transform: rotate(0deg);
-  -moz-transform-origin: 50% 50%;
   -webkit-transform: rotate(0deg);
-  -webkit-transform-origin: 50% 50%;
-
-  transition: transform $time;
-  -moz-transition: transform $time; 
-  -webkit-transition: transform $time; 
+ 
 }
 
 .orientation-e {
   transform: rotate(90deg);
   -moz-transform: rotate(90deg);
-  -moz-transform-origin: 50% 50%;
   -webkit-transform: rotate(90deg);
-  -webkit-transform-origin: 50% 50%;
 
-  transition: transform $time;
-  -moz-transition: transform $time; 
-  -webkit-transition: transform $time; 
 }
 
 .orientation-s {
   transform: rotate(180deg);
   -moz-transform: rotate(180deg);
-  -moz-transform-origin: 50% 50%;
   -webkit-transform: rotate(180deg);
-  -webkit-transform-origin: 50% 50%;
 
-  transition: transform $time;
-  -moz-transition: transform $time; 
-  -webkit-transition: transform $time; 
 }
 
 .orientation-w {
   transform: rotate(270deg)
   -moz-transform: rotate(270deg);
-  -moz-transform-origin: 50% 50%;
   -webkit-transform: rotate(270deg);
-  -webkit-transform-origin: 50% 50%;
 
-  transition: transform $time;
-  -moz-transition: transform $time; 
-  -webkit-transition: transform $time; 
 }
 
