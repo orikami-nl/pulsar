@@ -15,6 +15,7 @@ Template.domino.rendered = ->
   $(@firstNode).draggable(
     start: (e) =>
       console.log e
+      Session.set('dragging', true)
     stop: (e) =>
       console.log @data._id
       pos = $(@firstNode).position()
@@ -36,12 +37,14 @@ Template.board.events(
     Dominoes.remove({})
     
   'click .domino': (e) ->
-    console.log e
-    ori = "nesw".indexOf(@orientation)
-    @orientation = "neswn"[ori+1]
+    if Session.get('dragging')
+      Session.set('dragging', false)
+    else
+      console.log e
+      ori = "nesw".indexOf(@orientation)
+      @orientation = "neswn"[ori+1]
 
-    pos = $(e.currentTarget).position()
-    Dominoes.update({_id:@_id},{$set: {orientation: @orientation}})
-
+      pos = $(e.currentTarget).position()
+      Dominoes.update({_id:@_id},{$set: {orientation: @orientation}})
 )
 
